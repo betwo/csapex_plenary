@@ -1,0 +1,18 @@
+[submodule "src/csapex"]
+	path = src/csapex
+	url = https://github.com/cogsys-tuebingen/csapex.git
+[submodule "src/csapex_plugins/csapex_core_plugins"]
+	path = src/csapex_plugins/csapex_core_plugins
+	url = https://github.com/cogsys-tuebingen/csapex_core_plugins.git
+[submodule "src/deps/cslibs_vision"]
+	path = src/deps/cslibs_vision
+	url = https://github.com/cogsys-tuebingen/cslibs_vision.git
+[submodule "src/deps/cslibs_laser_processing"]
+	path = src/deps/cslibs_laser_processing
+	url = https://github.com/cogsys-tuebingen/cslibs_laser_processing.git
+[submodule "src/deps/cslibs_arff"]
+	path = src/deps/cslibs_arff
+	url = https://github.com/cogsys-tuebingen/cslibs_arff.git
+[submodule "src/deps/cslibs_indexed_storage"]
+	path = src/deps/cslibs_indexed_storage
+	url = https://github.com/cogsys-tuebingen/cslibs_indexed_storage.git
