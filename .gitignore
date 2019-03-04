@@ -1,0 +1,5 @@
+.catkin_*
+build*/*
+devel*/*
+logs*/*
+.vscode
