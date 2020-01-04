@@ -1,0 +1,22 @@
+FROM ros:kinetic-perception 
+
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends software-properties-common apt-transport-https ca-certificates gnupg software-properties-common wget && \
+    add-apt-repository -y ppa:jonathonf/gcc-7.1 && \
+    wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | apt-key add - && \
+    apt-add-repository 'deb https://apt.kitware.com/ubuntu/ xenial main' && \
+    apt-get update -y && \
+    apt-get install -y --no-install-recommends --reinstall openssh-client sudo gcc-7 g++-7 cmake
+    
+RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 50 --slave /usr/bin/g++ g++ /usr/bin/g++-7 && \
+    update-alternatives --set gcc "/usr/bin/gcc-7"
+
+RUN mkdir -p /build/ws/
+
+ADD ./ /build/ws/src
+
+SHELL [ "bash", "-c" ]
+
+RUN rosdep update
+RUN rosdep install --from-paths -r -i -y /build/ws/src
+RUN source /opt/ros/$(ls /opt/ros/ | head -n 1)/setup.bash && cd /build/ws/ && catkin_make_isolated

@@ -1,0 +1,31 @@
+FROM ubuntu:16.04
+
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends software-properties-common apt-transport-https ca-certificates gnupg software-properties-common wget && \
+    add-apt-repository -y ppa:jonathonf/gcc-7.1 && \
+    wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | apt-key add - && \
+    apt-add-repository 'deb https://apt.kitware.com/ubuntu/ xenial main' && \
+    apt-get update -y && \
+    apt-get install -y --no-install-recommends --reinstall openssh-client sudo gcc-7 g++-7 cmake
+    
+RUN sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list' && \
+    apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654 && \
+    apt-get update && \
+    apt-get -qq update -y && apt-get -qq install build-essential openssh-client ros-kinetic-ros-base python-catkin-pkg -y && \
+    rosdep init && \
+    rosdep update
+
+RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 50 --slave /usr/bin/g++ g++ /usr/bin/g++-7 && \
+    update-alternatives --set gcc "/usr/bin/gcc-7"
+
+RUN mkdir -p /build/ws/
+
+ADD ./ /build/ws/src
+
+SHELL [ "bash", "-c" ]
+
+RUN rosdep update
+
+RUN source /opt/ros/$(ls /opt/ros/ | head -n 1)/setup.bash && rosdep install --from-paths -i -y /build/ws/src
+
+RUN source /opt/ros/$(ls /opt/ros/ | head -n 1)/setup.bash && cd /build/ws/ && catkin_make_isolated
