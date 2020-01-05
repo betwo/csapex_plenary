@@ -1,8 +1,7 @@
 FROM ros:melodic-perception 
 
 RUN apt-get update -y && \
-    apt-get install -y --no-install-recommends build-essential openssh-client sudo && \ 
-    rm -rf /var/lib/apt/lists/*
+    apt-get install -y --no-install-recommends build-essential openssh-client sudo
 
 RUN mkdir -p /build/ws/
 

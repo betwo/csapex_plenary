@@ -11,10 +11,11 @@ developed in the [ROS](http://wiki.ros.org/) ecosystem. Many plugins also requir
 
 Required for a build are:
 - Linux system (tested with Ubuntu)
-- C++11 compatible compiler (g++, clang++)
+- CMake >= 3.8.2
+- C++17 compatible compiler (g++, clang++)
 - Qt5 (on Ubuntu: qt5-default libqt5svg5-dev)
 - libraries (included in ros-desktop):
-    - boost (program_options, filesystem, system, regex)
+    - boost (program_options, filesystem, system)
     - [classloader](https://github.com/ros/class_loader)
     - TinyXML (on Ubuntu: libtinyxml-dev)
     - yaml-cpp (on Ubuntu: libyaml-cpp-dev)
