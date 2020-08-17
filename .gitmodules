@@ -16,3 +16,15 @@
 [submodule "src/deps/cslibs_indexed_storage"]
 	path = src/deps/cslibs_indexed_storage
 	url = https://github.com/cogsys-tuebingen/cslibs_indexed_storage.git
+[submodule "src/csapex_plugins/csapex_navigation"]
+	path = src/csapex_plugins/csapex_navigation
+	url = https://github.com/betwo/csapex_navigation
+[submodule "src/gerona"]
+	path = src/gerona
+	url = https://github.com/cogsys-tuebingen/gerona.git
+[submodule "src/deps/cslibs_navigation_utilities"]
+	path = src/deps/cslibs_navigation_utilities
+	url = https://github.com/cogsys-tuebingen/cslibs_navigation_utilities
+[submodule "src/deps/cslibs_path_planning"]
+	path = src/deps/cslibs_path_planning
+	url = https://github.com/cogsys-tuebingen/cslibs_path_planning
