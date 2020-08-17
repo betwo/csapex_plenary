@@ -1,0 +1,25 @@
+name: update_dependencies
+
+on:
+  workflow_dispatch: []
+  schedule:
+    # build every night at 0:00
+    - cron:  '0 0 * * *'
+
+jobs:
+  update-dependencies:
+    runs-on: [ubuntu-16.04]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Checkout submodules
+      shell: bash
+      run: |
+        auth_header="$(git config --local --get http.https://github.com/.extraheader)"
+        git submodule sync --recursive
+        git -c "http.extraheader=$auth_header" -c protocol.version=2 submodule update --init --force --recursive --depth=1
+    - name: Checkout latest master on submodules
+      uses: srt32/git-actions@v0.0.3
+      with:
+        args: git submodule foreach "git fetch; git checkout master; git pull; git status"
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v3
