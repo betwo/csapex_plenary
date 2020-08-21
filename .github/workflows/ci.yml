@@ -1,7 +1,8 @@
-name: catkin_make_isolated
+name: build_docker_images
 
 on:
   push: []
+  pull_request: []
   schedule:
     # build every night at 0:00
     - cron:  '0 0 * * *'
