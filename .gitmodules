@@ -1,9 +1,9 @@
 [submodule "src/csapex"]
 	path = src/csapex
-	url = https://github.com/cogsys-tuebingen/csapex.git
+	url = https://github.com/betwo/csapex.git
 [submodule "src/csapex_plugins/csapex_core_plugins"]
 	path = src/csapex_plugins/csapex_core_plugins
-	url = https://github.com/cogsys-tuebingen/csapex_core_plugins.git
+	url = https://github.com/betwo/csapex_core_plugins.git
 [submodule "src/deps/cslibs_vision"]
 	path = src/deps/cslibs_vision
 	url = https://github.com/cogsys-tuebingen/cslibs_vision.git
